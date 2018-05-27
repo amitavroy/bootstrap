@@ -4,9 +4,9 @@ return [
 
     /**
      * This it the role which admins will get by default.
-     * A user with this role will have all the permissions.
+     * User with this role will have all permissions.
      */
-    'admin' => 'administrator',
+    'administrator' => 'administrator',
 
     /**
      * This is the role which any registered user will get
