@@ -21,3 +21,10 @@ $factory->define(App\User::class, function (Faker $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(\Spatie\Permission\Models\Role::class, function (Faker $faker) {
+    return [
+        'name' => $faker->word,
+        'guard_name' => 'web',
+    ];
+});
