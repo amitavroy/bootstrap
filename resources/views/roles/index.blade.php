@@ -8,7 +8,7 @@
                     <div class="card-header">Roles</div>
 
                     <div class="card-body">
-                        A list of all the roles in the current system.
+                        A list of all the roles in the current system. Or click <a href="{{route('roles.add')}}">here</a> to create a new one.
                     </div>
 
                     <ul class="list-group list-group-flush">
