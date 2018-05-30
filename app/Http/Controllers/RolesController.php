@@ -28,4 +28,9 @@ class RolesController extends Controller
 
         return redirect()->route('roles.add');
     }
+
+    public function destroy(Request $request)
+    {
+        return $request->all();
+    }
 }

@@ -13,7 +13,18 @@
 
                     <ul class="list-group list-group-flush">
                         @foreach($roles as $role)
-                            <li class="list-group-item">{{ucfirst($role->name)}}</li>
+                            <li class="list-group-item">
+                                <span>{{ucfirst($role->name)}}</span>
+                                <span class="float-right">
+                                    <a href="#" class="mr-3">Edit</a>
+                                    <a href="#"
+                                       v-cdelete.reload="{
+                                        link: '{{route('roles.delete')}}',
+                                        message: 'Are you sure you want to delete {{ucfirst($role->name)}} role?'
+                                       }">Delete
+                                    </a>
+                                </span>
+                            </li>
                         @endforeach
                     </ul>
                 </div>
