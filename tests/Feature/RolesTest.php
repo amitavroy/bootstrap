@@ -83,6 +83,8 @@ class RolesTest extends TestCase
     /** @test */
     public function role_name_is_required_while_creating_role()
     {
-        $this->assertTrue(false);
+        $this->actingAs($this->adminUser)
+            ->post(route('roles.create'), [])
+            ->assertSessionHasErrors(['name']);
     }
 }
