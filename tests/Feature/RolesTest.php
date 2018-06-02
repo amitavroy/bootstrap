@@ -22,11 +22,6 @@ class RolesTest extends TestCase
         $this->authUser = User::find(2);
     }
 
-    private function assertPageNotAccessable($route)
-    {
-        $this->get(route($route))->assertStatus(403);
-    }
-
     /** @test */
     public function an_user_with_manage_roles_permission_should_see_the_listing_page()
     {

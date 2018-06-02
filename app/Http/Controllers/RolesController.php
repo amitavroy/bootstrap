@@ -50,7 +50,7 @@ class RolesController extends Controller
     public function update(Request $request)
     {
         $data = $this->validate($request, [
-            'name' => 'required',
+            'name' => 'required|min:3|unique:roles,name',
             'id' => 'required',
         ]);
 

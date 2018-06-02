@@ -21,7 +21,7 @@
                                     <a href="#"
                                        v-cdelete.reload="{
                                         link: '{{route('permissions.delete')}}',
-                                        message: 'Are you sure you want to delete {{ucfirst($permission->name)}} role?',
+                                        message: 'Are you sure you want to delete {{ucfirst($permission->name)}} permission?',
                                         data: '{{json_encode(['id' => $permission->id])}}'
                                        }">Delete
                                     </a>
