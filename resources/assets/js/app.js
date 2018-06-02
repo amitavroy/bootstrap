@@ -15,18 +15,24 @@ window.Vue = require('vue');
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
-Vue.component('confirm-delete', require('./components/ConfirmDelete.vue'));
 
 Vue.directive('cdelete', {
   inserted(el, binding) {
-    console.log(binding);
     el.addEventListener('click', () => {
+      console.log(binding);
       var confirm = window.confirm(binding.value.message);
       if (confirm === true && binding.modifiers.reload === true) {
-        window.axios.post(binding.value.link, {data: 1}).then(response => {
-          console.log('response', response);
-        })
-        // location.reload();
+        var data = {};
+
+        if (binding.value.data != null && binding.value.data != '') {
+          data = JSON.parse(binding.value.data);
+        }
+
+        window.axios.post(binding.value.link, data).then(response => {
+          if (binding.modifiers.reload && binding.modifiers.reload === true) {
+            location.reload();
+          }
+        });
       }
     });
   }

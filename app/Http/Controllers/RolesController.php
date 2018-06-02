@@ -31,6 +31,33 @@ class RolesController extends Controller
 
     public function destroy(Request $request)
     {
-        return $request->all();
+        $data = $this->validate($request, [
+            'id' => 'required',
+        ]);
+
+        $role = Role::findById($data['id']);
+        $role->delete();
+
+        return redirect()->route('roles.index');
+    }
+
+    public function edit($id)
+    {
+        $role = Role::findOrFail($id);
+        return view('roles.edit', compact('role'));
+    }
+
+    public function update(Request $request)
+    {
+        $data = $this->validate($request, [
+            'name' => 'required',
+            'id' => 'required',
+        ]);
+
+        $role = Role::findById($data['id']);
+        $role->name = $data['name'];
+        $role->save();
+
+        return redirect()->route('roles.edit', $role->id);
     }
 }

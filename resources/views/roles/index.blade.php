@@ -16,11 +16,12 @@
                             <li class="list-group-item">
                                 <span>{{ucfirst($role->name)}}</span>
                                 <span class="float-right">
-                                    <a href="#" class="mr-3">Edit</a>
+                                    <a href="{{route('roles.edit', $role->id)}}" class="mr-3">Edit</a>
                                     <a href="#"
                                        v-cdelete.reload="{
                                         link: '{{route('roles.delete')}}',
-                                        message: 'Are you sure you want to delete {{ucfirst($role->name)}} role?'
+                                        message: 'Are you sure you want to delete {{ucfirst($role->name)}} role?',
+                                        data: '{{json_encode(['id' => $role->id])}}'
                                        }">Delete
                                     </a>
                                 </span>

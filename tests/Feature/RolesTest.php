@@ -87,4 +87,46 @@ class RolesTest extends TestCase
             ->post(route('roles.create'), [])
             ->assertSessionHasErrors(['name']);
     }
+
+    /** @test */
+    public function a_user_with_manage_role_can_edit_role()
+    {
+        $role = factory(Role::class)->create();
+
+        $this->actingAs($this->adminUser)
+            ->get(route('roles.edit', $role->id))
+            ->assertStatus(200)
+            ->assertSee('Edit role ' . $role->name);
+
+        $this->actingAs($this->authUser)
+            ->get(route('roles.edit', $role->id))
+            ->assertStatus(403);
+    }
+
+    /** @test */
+    public function a_name_and_id_should_be_given_while_editing_role()
+    {
+        $this->actingAs($this->adminUser)
+            ->post(route('roles.update'), [])
+            ->assertSessionHasErrors(['id', 'name']);
+    }
+
+    /** @test */
+    public function after_edit_new_role_name_is_visible()
+    {
+        $role = factory(Role::class)->create();
+
+        $data = [
+            'name' => 'new name',
+            'id' => $role->id,
+        ];
+
+        $this->actingAs($this->adminUser)
+            ->post(route('roles.update'), $data)
+            ->assertRedirect(route('roles.edit', $role->id));
+
+        $this->actingAs($this->adminUser)
+            ->get(route('roles.edit', $role))
+            ->assertSeeText('new name');
+    }
 }
