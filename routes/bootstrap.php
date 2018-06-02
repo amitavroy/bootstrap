@@ -16,4 +16,12 @@ Route::group(['middleware' => ['permission:manage roles']], function () {
     Route::get('roles/edit/{id}', 'RolesController@edit')->name('roles.edit');
     Route::post('roles/update', 'RolesController@update')->name('roles.update');
     Route::post('roles/delete', 'RolesController@destroy')->name('roles.delete');
+
+    /*Permissions related routes*/
+    Route::get('permissions', 'PermissionsController@index')->name('permissions.index');
+    Route::get('permissions/add', 'PermissionsController@create')->name('permissions.add');
+    Route::post('permissions/add', 'PermissionsController@store')->name('permissions.create');
+    Route::get('permissions/edit/{id}', 'PermissionsController@edit')->name('permissions.edit');
+    Route::post('permissions/update', 'PermissionsController@update')->name('permissions.update');
+    Route::post('permissions/delete', 'PermissionsController@destroy')->name('permissions.delete');
 });

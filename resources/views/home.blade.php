@@ -18,6 +18,21 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">Links</div>
+
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <a href="{{route('roles.index')}}">Roles</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="{{route('permissions.index')}}">Permissions</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
 @endsection
