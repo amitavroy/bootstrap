@@ -21,14 +21,18 @@
 
         <div class="col-md-4">
             <div class="card">
-                <div class="card-header">Links</div>
+                <div class="card-header">Manage</div>
 
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
                         <a href="{{route('roles.index')}}">Roles</a>
+                        <br>
+                        <small>Manage the system roles.</small>
                     </li>
                     <li class="list-group-item">
                         <a href="{{route('permissions.index')}}">Permissions</a>
+                        <br>
+                        <small>Manage the system permissions.</small>
                     </li>
                 </ul>
             </div>
