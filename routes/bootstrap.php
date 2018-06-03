@@ -8,7 +8,6 @@
  */
 
 Route::group(['middleware' => ['permission:manage roles']], function () {
-
     /*Roles related routes*/
     Route::get('roles', 'RolesController@index')->name('roles.index');
     Route::get('roles/add', 'RolesController@create')->name('roles.add');
@@ -16,7 +15,9 @@ Route::group(['middleware' => ['permission:manage roles']], function () {
     Route::get('roles/edit/{id}', 'RolesController@edit')->name('roles.edit');
     Route::post('roles/update', 'RolesController@update')->name('roles.update');
     Route::post('roles/delete', 'RolesController@destroy')->name('roles.delete');
+});
 
+Route::group(['middleware' => ['permission:manage permissions']], function () {
     /*Permissions related routes*/
     Route::get('permissions', 'PermissionsController@index')->name('permissions.index');
     Route::get('permissions/add', 'PermissionsController@create')->name('permissions.add');
@@ -24,4 +25,10 @@ Route::group(['middleware' => ['permission:manage roles']], function () {
     Route::get('permissions/edit/{id}', 'PermissionsController@edit')->name('permissions.edit');
     Route::post('permissions/update', 'PermissionsController@update')->name('permissions.update');
     Route::post('permissions/delete', 'PermissionsController@destroy')->name('permissions.delete');
+});
+
+Route::group(['middleware' => ['permission:manage settings']], function () {
+    /*Permissions related routes*/
+    Route::get('settings', 'SettingsController@index')->name('settings.index');
+    Route::post('settings/add', 'SettingsController@add')->name('settings.add');
 });

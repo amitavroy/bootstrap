@@ -16,10 +16,12 @@ class SystemPermissions extends Seeder
         $admin = Role::where('name', bs_config('administrator'))->first();
         $manageRoles = Permission::create(['name' => 'manage roles']);
         $manageUsers = Permission::create(['name' => 'manage users']);
+        $managePermissions = Permission::create(['name' => 'manage permissions']);
         $manageSettings = Permission::create(['name' => 'manage settings']);
 
         $admin->givePermissionTo($manageRoles);
         $admin->givePermissionTo($manageUsers);
         $admin->givePermissionTo($manageSettings);
+        $admin->givePermissionTo($managePermissions);
     }
 }
